@@ -4,7 +4,7 @@ import backCard from "../images/back-card.svg";
 import "../styles/card.css";
 
 const Card = ({ cardSrc }) => {
-  let [flipped, setflipped] = useState(true);
+  let [flipped, setflipped] = useState(false);
 
   return (
     <div

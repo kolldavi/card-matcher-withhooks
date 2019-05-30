@@ -2,16 +2,10 @@ import React from "react";
 
 import "./App.css";
 import MainCardArea from "./components/MainCardArea";
+import cardData from "./utils/getImages.js";
 
-function importAll(r) {
-  return r.keys().map(r);
-}
-
-const images = importAll(
-  require.context("./images", false, /\.(png|jpe?g|svg)$/)
-);
 function App() {
-  return <MainCardArea cardImages={{ ...images }} />;
+  return <MainCardArea cardImages={cardData} />;
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import styled from "styled-components";
+import { formatCards } from "../utils/getImages";
 const StyledCardGrid = styled.div`
   display: grid;
   max-height: 80vh;
@@ -12,10 +13,12 @@ const StyledCardGrid = styled.div`
   margin-top: 10%;
 `;
 const MainCardArea = ({ cardImages }) => {
+  const formatedCards = formatCards(cardImages);
+
   return (
     <StyledCardGrid>
-      {Object.entries(cardImages).map((key, index) => (
-        <Card key={index} cardSrc={key[1]} />
+      {formatedCards.map((cardData, i) => (
+        <Card key={i} cardSrc={cardData["data"]["imageSrc"]} />
       ))}
     </StyledCardGrid>
   );

@@ -3,8 +3,8 @@
 }
 .card {
   display: flex;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   align-items: center;
   border: 2px solid black;
   box-shadow: 5px 10px 8px #888888;
