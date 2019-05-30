@@ -14,8 +14,8 @@ const StyledCardGrid = styled.div`
 const MainCardArea = ({ cardImages }) => {
   return (
     <StyledCardGrid>
-      {cardImages.map(card => (
-        <Card key={card} cardSrc={card} />
+      {Object.entries(cardImages).map((key, index) => (
+        <Card key={index} cardSrc={key[1]} />
       ))}
     </StyledCardGrid>
   );

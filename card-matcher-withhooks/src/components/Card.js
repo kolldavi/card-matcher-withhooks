@@ -1,64 +1,22 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
 
-const flipCard = keyframes`
-  from {
-    transform: rotateY(0deg);
-    src: url(${({ cardSrc }) => cardSrc});
-  }
-
-  to {
-    transform: rotateY(180deg);
-    src: local(/static/media/football.59da4ab0.svg)
- 
-  }
-`;
-const changeImage = keyframes`
-  from {
-    transform: rotateY(0deg);
-    content: url(${({ cardSrc }) => cardSrc});
-  }
-
-  to {
-    transform: rotateY(180deg);
-    content: url(/static/media/football.59da4ab0.svg)
- 
-  }
-`;
-const StyledCard = styled.div`
-  display: flex;
-  width: 200px;
-  height: 200px;
-  align-items: center;
-  border: 1px solid red;
-  &.flipped {
-    animation: ${flipCard} 1s linear;
-  }
-`;
-
-const StyledImage = styled.img`
-  height: 100%;
-  width: 100%;
-  content: url(${({ cardSrc }) => cardSrc});
-  &:has(> .flipped) {
-    content: url(/static/media/football.59da4ab0.svg);
-  }
-`;
+import backCard from "../images/back-card.svg";
+import "../styles/card.css";
 
 const Card = ({ cardSrc }) => {
-  let [flipped, setflipped] = useState(false);
-  const updateCard = () => {
-    setflipped((flipped = !flipped));
-  };
+  let [flipped, setflipped] = useState(true);
+
   return (
-    <StyledCard
-      onClick={() => {
-        updateCard();
-      }}
-      className={flipped ? "flipped" : ""}
+    <div
+      onClick={() => setflipped((flipped = !flipped))}
+      className={flipped ? "card flipped" : "card"}
     >
-      <StyledImage cardSrc={cardSrc} alt={cardSrc} />
-    </StyledCard>
+      <img
+        className="card-img"
+        src={flipped ? backCard : cardSrc}
+        alt={flipped ? "back of card" : cardSrc}
+      />
+    </div>
   );
 };
 

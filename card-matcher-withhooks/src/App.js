@@ -11,8 +11,7 @@ const images = importAll(
   require.context("./images", false, /\.(png|jpe?g|svg)$/)
 );
 function App() {
-  console.log(images);
-  return <MainCardArea cardImages={images} />;
+  return <MainCardArea cardImages={{ ...images }} />;
 }
 
 export default App;
