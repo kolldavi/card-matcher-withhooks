@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import MainCardArea from "./components/MainCardArea";
-import cardData from "./utils/getImages.js";
+import { Cards } from "./utils/getImages.js";
 
 function App() {
-  return <MainCardArea cardImages={cardData} />;
+  let [cards, setCards] = useState(Cards);
+  const updateCards = newCards => {
+    setCards((cards = newCards));
+  };
+  return (
+    <MainCardArea cards={cards} updateCards={cards => updateCards(cards)} />
+  );
 }
 
 export default App;

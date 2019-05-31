@@ -25,3 +25,5 @@ export function formatCards(data) {
 
   return shuffle([...formatData, ...formatData]);
 }
+
+export const Cards = formatCards(filterdImage);

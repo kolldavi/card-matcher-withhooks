@@ -3,18 +3,22 @@ import React, { useState } from "react";
 import backCard from "../images/back-card.svg";
 import "../styles/card.css";
 
-const Card = ({ cardSrc }) => {
-  let [flipped, setflipped] = useState(false);
-
+const Card = ({ cardSrc, setCard, id, isTurned, isMatched, cardId }) => {
   return (
     <div
-      onClick={() => setflipped((flipped = !flipped))}
-      className={flipped ? "card flipped" : "card"}
+      onClick={() => {
+        if (isTurned) return;
+
+        setCard(id, cardId);
+      }}
+      className={
+        isMatched ? "card matched" : !isTurned ? "card flipped" : "card"
+      }
     >
       <img
         className="card-img"
-        src={flipped ? backCard : cardSrc}
-        alt={flipped ? "back of card" : cardSrc}
+        src={!isTurned ? backCard : cardSrc}
+        alt={!isTurned ? "back of card" : cardSrc}
       />
     </div>
   );
