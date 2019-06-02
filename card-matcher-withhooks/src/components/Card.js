@@ -8,7 +8,6 @@ const Card = ({ cardSrc, setCard, id, isTurned, isMatched, cardId }) => {
     <div
       onClick={() => {
         if (isTurned) return;
-
         setCard(id, cardId);
       }}
       className={

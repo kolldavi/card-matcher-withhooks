@@ -25,7 +25,6 @@ const MainCardArea = ({ cards, updateCards }) => {
     let newCardList = cards;
 
     newCardList[key] = newCard[0];
-
     updateCards(newCardList);
   };
 
@@ -42,10 +41,6 @@ const MainCardArea = ({ cards, updateCards }) => {
   };
 
   const setCard = (id, key) => {
-    console.log("card", cards[key]["data"]["isTurned"]);
-    console.log("prevCard", prevCard);
-    console.log("currentCard", currentCard);
-
     if (!currentCard && !prevCard) {
       setCardDataTurn(id, key, true);
       setCurrentCard((currentCard = [id, key]));
@@ -54,18 +49,20 @@ const MainCardArea = ({ cards, updateCards }) => {
     if (currentCard && !prevCard) {
       setCardDataTurn(id, key, true);
       setPrevCard((prevCard = [id, key]));
-      if (currentCard[0] === prevCard[0]) {
-        //match
-        console.log("------MATCH-------");
-        setCardDataMatch(prevCard[0], prevCard[1]);
-        setCardDataMatch(currentCard[0], currentCard[1]);
-      } else {
-        setCardDataTurn(prevCard[0], prevCard[1], false);
-        setCardDataTurn(currentCard[0], currentCard[1], false);
-      }
-      //reset
-      setCurrentCard((currentCard = undefined));
-      setPrevCard((prevCard = undefined));
+      setTimeout(function() {
+        if (currentCard[0] === prevCard[0]) {
+          //match
+          console.log("------MATCH-------");
+          setCardDataMatch(prevCard[0], prevCard[1]);
+          setCardDataMatch(currentCard[0], currentCard[1]);
+        } else {
+          setCardDataTurn(prevCard[0], prevCard[1], false);
+          setCardDataTurn(currentCard[0], currentCard[1], false);
+        }
+        //reset
+        setCurrentCard((currentCard = undefined));
+        setPrevCard((prevCard = undefined));
+      }, 800);
     }
   };
 
