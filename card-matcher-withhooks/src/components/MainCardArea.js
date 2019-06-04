@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Card from "./Card";
+import Timer from "./Timer";
 import styled from "styled-components";
 
 const StyledCardGrid = styled.div`
@@ -15,7 +16,8 @@ const StyledCardGrid = styled.div`
 const MainCardArea = ({ cards, updateCards }) => {
   let [currentCard, setCurrentCard] = useState(null);
   let [prevCard, setPrevCard] = useState(null);
-
+  let [isDone, setIsDone] = useState(false);
+  let [numberOfMatches, setNumberOfMatches] = useState(0);
   const setCardDataTurn = (id, key, value) => {
     let newCard = cards
       .filter((card, i) => i === key)
@@ -53,6 +55,10 @@ const MainCardArea = ({ cards, updateCards }) => {
         if (currentCard[0] === prevCard[0]) {
           //match
           console.log("------MATCH-------");
+          setNumberOfMatches((numberOfMatches = numberOfMatches + 1));
+          if (numberOfMatches === cards.length / 2) {
+            setIsDone((isDone = true));
+          }
           setCardDataMatch(prevCard[0], prevCard[1]);
           setCardDataMatch(currentCard[0], currentCard[1]);
         } else {
@@ -81,6 +87,7 @@ const MainCardArea = ({ cards, updateCards }) => {
           isTurned={cardData["data"]["isTurned"]}
         />
       ))}
+      <Timer isDone={isDone} />
     </StyledCardGrid>
   );
 };
