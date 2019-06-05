@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import useInterval from "./useInterval";
+import styled from "styled-components";
+
+const StyledTimer = styled.div`
+  display: flex;
+  background-color: gray;
+  justify-content: center;
+  align-self: center;
+  grid-column: 2 /4;
+  font-size: 1.5em;
+  color: white;
+  margin-top: 23px;
+`;
 const Timer = ({ isDone }) => {
   let [currentTime, setCurrentTime] = useState(0);
 
@@ -12,9 +24,9 @@ const Timer = ({ isDone }) => {
   );
 
   return (
-    <>
+    <StyledTimer>
       <p>{currentTime}</p>
-    </>
+    </StyledTimer>
   );
 };
 

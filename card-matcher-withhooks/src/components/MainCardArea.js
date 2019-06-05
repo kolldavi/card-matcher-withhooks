@@ -8,10 +8,13 @@ const StyledCardGrid = styled.div`
   max-height: 80vh;
   max-width: 80vw;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-gap: 10px;
+  grid-template-rows: repeat(4, 1fr) 100px;
   margin-left: 10%;
-  margin-top: 10%;
+  margin-top: 2%;
+  border: 10px solid yellow;
+  border-radius: 5px;
+  background-color: #317589;
+  grid-gap: 5px;
 `;
 const MainCardArea = ({ cards, updateCards }) => {
   let [currentCard, setCurrentCard] = useState(null);
