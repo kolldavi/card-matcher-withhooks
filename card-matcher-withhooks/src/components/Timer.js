@@ -13,7 +13,7 @@ const StyledTimer = styled.div`
   margin-top: 23px;
 `;
 const Timer = ({ isDone }) => {
-  let [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   useInterval(
     () => {

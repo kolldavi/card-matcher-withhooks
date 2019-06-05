@@ -2,14 +2,15 @@
   transform: rotateY(180deg);
 }
 .card {
-  display: flex;
-
-  align-items: center;
-  border: 2px solid black;
+  border: 5px solid rgb(178, 196, 24);
   box-shadow: 2px 4px 4px 4px #044f67;
   border-radius: 5px;
   transition: all 1s ease;
   background-color: aqua;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 .card-img {

@@ -9,18 +9,31 @@ const StyledCardGrid = styled.div`
   max-width: 80vw;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr) 100px;
+  padding-top: 2%;
   margin-left: 10%;
   margin-top: 2%;
-  border: 10px solid yellow;
+  border: 10px solid black;
   border-radius: 5px;
   background-color: #317589;
-  grid-gap: 5px;
+  grid-gap: 15px;
+  padding-left: 5%;
+
+  @media (max-width: 700px) {
+    margin-left: 0;
+    margin-top: 2%;
+    max-width: 100vw;
+    max-height: 90vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr) 100px;
+    padding-left: 0%;
+  }
 `;
 const MainCardArea = ({ cards, updateCards }) => {
-  let [currentCard, setCurrentCard] = useState(null);
-  let [prevCard, setPrevCard] = useState(null);
-  let [isDone, setIsDone] = useState(false);
-  let [numberOfMatches, setNumberOfMatches] = useState(0);
+  const [currentCard, setCurrentCard] = useState(undefined);
+  const [prevCard, setPrevCard] = useState(undefined);
+  const [isDone, setIsDone] = useState(false);
+  const [numberOfMatches, setNumberOfMatches] = useState(0);
+
   const setCardDataTurn = (id, key, value) => {
     let newCard = cards
       .filter((card, i) => i === key)
@@ -45,35 +58,34 @@ const MainCardArea = ({ cards, updateCards }) => {
     updateCards(newCardList);
   };
 
-  const setCard = (id, key) => {
+  function setCard(id, key) {
     if (!currentCard && !prevCard) {
       setCardDataTurn(id, key, true);
-      setCurrentCard((currentCard = [id, key]));
+      setCurrentCard([id, key]);
       return;
     }
     if (currentCard && !prevCard) {
       setCardDataTurn(id, key, true);
-      setPrevCard((prevCard = [id, key]));
-      setTimeout(function() {
-        if (currentCard[0] === prevCard[0]) {
+      setPrevCard([id, key]);
+      setTimeout(() => {
+        if (currentCard[0] === id) {
           //match
-          console.log("------MATCH-------");
-          setNumberOfMatches((numberOfMatches = numberOfMatches + 1));
-          if (numberOfMatches === cards.length / 2) {
-            setIsDone((isDone = true));
+          setNumberOfMatches(numberOfMatches + 1);
+          if (1 + numberOfMatches === cards.length / 2) {
+            setIsDone(true);
           }
-          setCardDataMatch(prevCard[0], prevCard[1]);
+          setCardDataMatch(id, key);
           setCardDataMatch(currentCard[0], currentCard[1]);
         } else {
-          setCardDataTurn(prevCard[0], prevCard[1], false);
+          setCardDataTurn(id, key, false);
           setCardDataTurn(currentCard[0], currentCard[1], false);
         }
-        //reset
-        setCurrentCard((currentCard = undefined));
-        setPrevCard((prevCard = undefined));
+        //reset selected cards
+        setCurrentCard(undefined);
+        setPrevCard(undefined);
       }, 800);
     }
-  };
+  }
 
   // console.log("currentCard", currentCard);
   // console.log("prevCard", prevCard);

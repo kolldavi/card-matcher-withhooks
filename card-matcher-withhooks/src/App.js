@@ -5,9 +5,9 @@ import MainCardArea from "./components/MainCardArea";
 import { Cards } from "./utils/getImages.js";
 
 function App() {
-  let [cards, setCards] = useState(Cards);
+  const [cards, setCards] = useState(Cards);
   const updateCards = newCards => {
-    setCards((cards = newCards));
+    setCards(newCards);
   };
   return (
     <MainCardArea cards={cards} updateCards={cards => updateCards(cards)} />
