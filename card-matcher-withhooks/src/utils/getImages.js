@@ -8,8 +8,10 @@ const images = importAll(
 const filterdImage = images.filter(
   image => !image.startsWith("/static/media/back-card")
 );
+const EASY = filterdImage.slice(0, 6);
+const MEDIUM = filterdImage.slice(0, 8);
+const HARD = filterdImage;
 
-export default filterdImage;
 export function formatCards(data) {
   const formatData = data.map(card => {
     const id = uniqueId();
@@ -25,5 +27,8 @@ export function formatCards(data) {
 
   return shuffle([...formatData, ...formatData]);
 }
-
-export const Cards = formatCards(filterdImage);
+export const Cards = {
+  EASY: formatCards(EASY),
+  MEDIUM: formatCards(MEDIUM),
+  HARD: formatCards(HARD)
+};

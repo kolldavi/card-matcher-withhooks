@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import Timer from "./Timer";
 import styled from "styled-components";
 
 const StyledCardGrid = styled.div`
   display: grid;
-  max-height: 80vh;
   max-width: 80vw;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr) 100px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr) 100px;
   padding-top: 2%;
   margin-left: 10%;
   margin-top: 2%;
@@ -22,7 +21,7 @@ const StyledCardGrid = styled.div`
     margin-left: 0;
     margin-top: 2%;
     max-width: 100vw;
-    max-height: 90vh;
+
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr) 100px;
     padding-left: 0%;
@@ -87,8 +86,7 @@ const MainCardArea = ({ cards, updateCards }) => {
     }
   }
 
-  // console.log("currentCard", currentCard);
-  // console.log("prevCard", prevCard);
+  useEffect(() => {}, [cards]);
   return (
     <StyledCardGrid>
       {cards.map((cardData, i) => (
