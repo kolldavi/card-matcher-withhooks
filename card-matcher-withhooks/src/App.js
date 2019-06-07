@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "./App.css";
 import MainCardArea from "./components/MainCardArea";
+import ChoiceScreen from "./components/ChoiceScreen";
 import { Cards } from "./utils/getImages.js";
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
     setCards(newCards);
   };
   return (
-    <MainCardArea cards={cards} updateCards={cards => updateCards(cards)} />
+    <div>
+      <ChoiceScreen />
+      <MainCardArea cards={cards} updateCards={cards => updateCards(cards)} />
+    </div>
   );
 }
 
