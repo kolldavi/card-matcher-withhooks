@@ -3,14 +3,17 @@ import { shuffle } from "lodash";
 import "./App.css";
 import MainCardArea from "./components/MainCardArea";
 import ChoiceScreen from "./components/ChoiceScreen";
-import { Cards } from "./utils/getImages.js";
+import { Cards, resetCard } from "./utils/getImages.js";
 
 function App() {
   const [cards, setCards] = useState(Cards["EASY"]);
   const [difficulty, setDifficulty] = useState("EASY");
+
   useEffect(() => {
-    setCards(Cards[difficulty]);
-  }, [cards, difficulty]);
+    const newCards = shuffle(resetCard(Cards[difficulty]));
+    setCards(newCards);
+  }, [difficulty]);
+
   return (
     <div>
       <ChoiceScreen
@@ -18,10 +21,7 @@ function App() {
           setDifficulty(diff);
         }}
       />
-      <MainCardArea
-        cards={cards}
-        updateCards={() => setCards(Cards[difficulty])}
-      />
+      <MainCardArea cards={cards} updateCards={() => setCards(cards)} />
     </div>
   );
 }

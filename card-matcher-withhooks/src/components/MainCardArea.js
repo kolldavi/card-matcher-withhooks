@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import Timer from "./Timer";
 import styled from "styled-components";
@@ -24,15 +24,13 @@ const StyledCardGrid = styled.div`
 
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr) 100px;
-    padding-left: 0%;
   }
 `;
 const MainCardArea = ({ cards, updateCards }) => {
   const [currentCard, setCurrentCard] = useState(undefined);
   const [prevCard, setPrevCard] = useState(undefined);
-  const [isDone, setIsDone] = useState(false);
   const [numberOfMatches, setNumberOfMatches] = useState(0);
-
+  const [isDone, setIsDone] = useState(false);
   const setCardDataTurn = (id, key, value) => {
     let newCard = cards
       .filter((card, i) => i === key)
@@ -58,6 +56,7 @@ const MainCardArea = ({ cards, updateCards }) => {
   };
 
   function setCard(id, key) {
+    console.log("update");
     if (!currentCard && !prevCard) {
       setCardDataTurn(id, key, true);
       setCurrentCard([id, key]);
@@ -86,7 +85,6 @@ const MainCardArea = ({ cards, updateCards }) => {
     }
   }
 
-  useEffect(() => {}, [cards]);
   return (
     <StyledCardGrid>
       {cards.map((cardData, i) => (

@@ -27,6 +27,18 @@ export function formatCards(data) {
 
   return shuffle([...formatData, ...formatData]);
 }
+export const resetCard = cards => {
+  return cards.map(card => {
+    return {
+      id: card.id,
+      data: {
+        imageSrc: card["data"]["imageSrc"],
+        isTurned: false,
+        isMatch: false
+      }
+    };
+  });
+};
 export const Cards = {
   EASY: formatCards(EASY),
   MEDIUM: formatCards(MEDIUM),
