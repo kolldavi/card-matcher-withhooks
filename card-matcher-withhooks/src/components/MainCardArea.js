@@ -26,7 +26,13 @@ const StyledCardGrid = styled.div`
     grid-template-rows: repeat(5, 1fr) 100px;
   }
 `;
-const MainCardArea = ({ cards, updateCards }) => {
+const MainCardArea = ({
+  cards,
+  updateCards,
+  setHighScores,
+  setAppState,
+  setDifficulty
+}) => {
   const [currentCard, setCurrentCard] = useState(undefined);
   const [prevCard, setPrevCard] = useState(undefined);
   const [numberOfMatches, setNumberOfMatches] = useState(0);
@@ -56,7 +62,6 @@ const MainCardArea = ({ cards, updateCards }) => {
   };
 
   function setCard(id, key) {
-    console.log("update");
     if (!currentCard && !prevCard) {
       setCardDataTurn(id, key, true);
       setCurrentCard([id, key]);
@@ -70,7 +75,9 @@ const MainCardArea = ({ cards, updateCards }) => {
           //match
           setNumberOfMatches(numberOfMatches + 1);
           if (1 + numberOfMatches === cards.length / 2) {
+            setDifficulty();
             setIsDone(true);
+            setAppState();
           }
           setCardDataMatch(id, key);
           setCardDataMatch(currentCard[0], currentCard[1]);
@@ -98,7 +105,7 @@ const MainCardArea = ({ cards, updateCards }) => {
           isTurned={cardData["data"]["isTurned"]}
         />
       ))}
-      <Timer isDone={isDone} />
+      <Timer isDone={isDone} setHighScores={setHighScores} />
     </StyledCardGrid>
   );
 };

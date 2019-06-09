@@ -31,14 +31,33 @@ const ChoiceContainer = styled.div`
   height: 50vh;
   flex-direction: column;
 `;
-function ChoiceScreen({ setDifficulty }) {
+function ChoiceScreen({ setDifficulty, setAppState }) {
   return (
     <ChoiceContainer>
-      <StyledButton onClick={() => setDifficulty("EASY")}>Easy</StyledButton>
-      <StyledButton onClick={() => setDifficulty("MEDIUM")}>
+      <StyledButton
+        onClick={() => {
+          setDifficulty("EASY");
+          setAppState();
+        }}
+      >
+        Easy
+      </StyledButton>
+      <StyledButton
+        onClick={() => {
+          setDifficulty("MEDIUM");
+          setAppState();
+        }}
+      >
         Medium
       </StyledButton>
-      <StyledButton onClick={() => setDifficulty("HARD")}>Hard</StyledButton>
+      <StyledButton
+        onClick={() => {
+          setDifficulty("HARD");
+          setAppState();
+        }}
+      >
+        Hard
+      </StyledButton>
     </ChoiceContainer>
   );
 }

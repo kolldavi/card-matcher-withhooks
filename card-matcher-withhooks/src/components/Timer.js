@@ -12,11 +12,13 @@ const StyledTimer = styled.div`
   color: white;
   margin-top: 23px;
 `;
-const Timer = ({ isDone }) => {
+const Timer = ({ isDone, setHighScores }) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   useInterval(
     () => {
+      setHighScores(currentTime);
+
       // Your custom logic here
       setCurrentTime(currentTime + 1);
     },
