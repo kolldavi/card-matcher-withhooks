@@ -6,9 +6,10 @@ import styled from "styled-components";
 const StyledCardGrid = styled.div`
   display: grid;
   max-width: 80vw;
+  max-height: 95vh;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr) 100px;
-  padding-top: 2%;
+  padding-top: 1%;
   margin-left: 10%;
   margin-top: 2%;
   border: 10px solid black;
@@ -18,10 +19,13 @@ const StyledCardGrid = styled.div`
   padding-left: 5%;
 
   @media (max-width: 700px) {
+    margin-top: 0;
     margin-left: 0;
-    margin-top: 2%;
-    max-width: 100vw;
+    padding-top: 2%;
+    max-height: 100vh;
 
+    max-width: 100vw;
+    border-radius: 0;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr) 100px;
   }

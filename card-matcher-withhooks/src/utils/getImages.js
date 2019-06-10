@@ -8,7 +8,7 @@ const images = importAll(
 const filterdImage = images.filter(
   image => !image.startsWith("/static/media/back-card")
 );
-const EASY = filterdImage.slice(0, 2);
+const EASY = filterdImage.slice(0, 1);
 const MEDIUM = filterdImage.slice(0, 8);
 const HARD = filterdImage;
 
