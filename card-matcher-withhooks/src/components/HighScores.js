@@ -9,7 +9,11 @@ function HighScores({ setAppState, highScores }) {
       <h1>EASY SCORES</h1>
       <ol>
         {EASY.length > 0 ? (
-          EASY.map((item, index) => <li key={index}>{item} seconds</li>)
+          EASY.map((item, index) => (
+            <li key={index}>
+              {item.time} seconds at {item.date}
+            </li>
+          ))
         ) : (
           <li>No Scores Available</li>
         )}
@@ -17,7 +21,11 @@ function HighScores({ setAppState, highScores }) {
       <h1>MEDIUM SCORES</h1>
       <ol>
         {MEDIUM.length > 0 ? (
-          MEDIUM.map((item, index) => <li key={index}>{item} seconds</li>)
+          MEDIUM.map((item, index) => (
+            <li key={index}>
+              {item.time} seconds at {item.date}
+            </li>
+          ))
         ) : (
           <li>No Scores Available</li>
         )}
@@ -25,7 +33,11 @@ function HighScores({ setAppState, highScores }) {
       <h1>HARD SCORES</h1>
       <ol>
         {HARD.length > 0 ? (
-          HARD.map((item, index) => <li key={index}>{item} seconds</li>)
+          HARD.map((item, index) => (
+            <li key={index}>
+              {item.time} seconds at {item.date}
+            </li>
+          ))
         ) : (
           <li>No Scores Available</li>
         )}

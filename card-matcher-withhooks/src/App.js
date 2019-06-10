@@ -19,14 +19,17 @@ function App() {
   };
   const [highScores, setHighScores] = useState(highScoresData);
   function filterAndSortScores(arr) {
-    return arr.sort((a, b) => a - b).slice(0, 5);
+    return arr.sort((a, b) => a["time"] - b["time"]).slice(0, 5);
   }
   function setNewHighScore(time) {
     console.log("time set:", time);
 
     const temp = {
       ...highScores,
-      [difficulty]: filterAndSortScores([...highScores[difficulty], time])
+      [difficulty]: filterAndSortScores([
+        ...highScores[difficulty],
+        { time: time, date: new Date().toLocaleString() }
+      ])
     };
 
     localStorage.setItem("card-match-scores", JSON.stringify(temp));
