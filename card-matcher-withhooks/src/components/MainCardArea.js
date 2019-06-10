@@ -5,13 +5,12 @@ import styled from "styled-components";
 
 const StyledCardGrid = styled.div`
   display: grid;
-  max-width: 80vw;
-  max-height: 95vh;
+  max-height: 100vh;
+  max-width: 100vw;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr) 100px;
+  grid-template-rows: repeat(6, 1fr) 20px;
   padding-top: 1%;
-  margin-left: 10%;
-  margin-top: 2%;
+
   border: 10px solid black;
   border-radius: 5px;
   background-color: #317589;
@@ -23,11 +22,19 @@ const StyledCardGrid = styled.div`
     margin-left: 0;
     padding-top: 2%;
     max-height: 100vh;
-
     max-width: 100vw;
     border-radius: 0;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr) 100px;
+    padding-left: 0;
+    grid-template-rows: repeat(6, 1fr) 20px;
+  }
+  @media (max-width: 400px) {
+    max-height: 100vh;
+    max-width: 100vw;
+    margin-top: 0;
+    margin-left: 0;
+    padding-top: 2%;
+    padding-left: 0;
+    grid-template-rows: repeat(6, 1fr) 20px;
   }
 `;
 const MainCardArea = ({
