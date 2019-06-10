@@ -10,19 +10,26 @@ function App() {
   const [appState, setAppState] = useState("ChoiceScreen");
   const [cards, setCards] = useState(Cards["EASY"]);
   const [difficulty, setDifficulty] = useState("EASY");
-  const highScoresData = {
+  const highScoresData = JSON.parse(
+    localStorage.getItem("card-match-scores")
+  ) || {
     EASY: [],
     MEDIUM: [],
     HARD: []
   };
   const [highScores, setHighScores] = useState(highScoresData);
+  function filterAndSortScores(arr) {
+    return arr.sort((a, b) => a - b).slice(0, 5);
+  }
   function setNewHighScore(time) {
     console.log("time set:", time);
+
     const temp = {
       ...highScores,
-      [difficulty]: [...highScores[difficulty], time]
+      [difficulty]: filterAndSortScores([...highScores[difficulty], time])
     };
-    console.log("temp", temp);
+
+    localStorage.setItem("card-match-scores", JSON.stringify(temp));
     setHighScores(temp);
   }
 

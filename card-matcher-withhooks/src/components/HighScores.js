@@ -24,7 +24,7 @@ function HighScores({ setAppState, highScores }) {
       </ol>
       <h1>HARD SCORES</h1>
       <ol>
-        {EASY.length > 0 ? (
+        {HARD.length > 0 ? (
           HARD.map((item, index) => <li key={index}>{item} seconds</li>)
         ) : (
           <li>No Scores Available</li>
