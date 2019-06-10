@@ -17,7 +17,7 @@ function App() {
   };
   const [highScores, setHighScores] = useState(highScoresData);
   function setNewHighScore(time) {
-    console.log("time", time);
+    console.log("time set:", time);
     const temp = {
       ...highScores,
       [difficulty]: [...highScores[difficulty], time]

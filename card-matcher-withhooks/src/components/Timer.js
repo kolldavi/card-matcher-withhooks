@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import useInterval from "./useInterval";
+import React, { useState, useEffect } from "react";
+
 import styled from "styled-components";
 
 const StyledTimer = styled.div`
@@ -13,21 +13,23 @@ const StyledTimer = styled.div`
   margin-top: 23px;
 `;
 const Timer = ({ isDone, setHighScores }) => {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(seconds => seconds + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-  useInterval(
-    () => {
-      setHighScores(currentTime);
-
-      // Your custom logic here
-      setCurrentTime(currentTime + 1);
-    },
-    isDone ? null : 1000
-  );
+  useEffect(() => {
+    if (isDone) {
+      setHighScores(seconds);
+    }
+  }, [isDone, seconds, setHighScores]);
 
   return (
     <StyledTimer>
-      <p>{currentTime}</p>
+      <p>{seconds}</p>
     </StyledTimer>
   );
 };
