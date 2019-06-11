@@ -5,6 +5,7 @@ const StyledContainer = styled.div`
   display: grid;
   width: 100vw;
   height: 100vh;
+
   justify-items: center;
 `;
 const CurrentScore = styled.div`
@@ -21,7 +22,6 @@ const HighScoreContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   width: 100%;
 `;
 const StyledButton = styled.button`
@@ -51,7 +51,7 @@ function HighScores({ setAppState, highScores, currentScore }) {
   return (
     <StyledContainer>
       <CurrentScore>
-        <h1>Latest Score: {currentScore}</h1>
+        <h1>Latest Score: {currentScore} Seconds</h1>
       </CurrentScore>
       <HighScoreContainer>
         <h1>EASY SCORES</h1>
