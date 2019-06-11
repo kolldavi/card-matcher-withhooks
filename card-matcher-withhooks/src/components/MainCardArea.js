@@ -17,9 +17,7 @@ const StyledCardGrid = styled.div`
   border: 10px solid black;
   border-radius: 5px;
   grid-gap: 10px;
-  @media (max-height: 668px) {
-    height: 90vh;
-  }
+
   @media (max-height: 668px) and (orientation: landscape) {
     height: 100vh;
   }
