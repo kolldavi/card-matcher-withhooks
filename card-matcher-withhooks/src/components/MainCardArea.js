@@ -7,22 +7,21 @@ const StyledCardGrid = styled.div`
   background-color: #317589;
   padding-top: 10px;
   display: grid;
-  min-height: 100vh;
-  min-width: 100vw;
   height: 100vh;
   width: 100vw;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: ${({ difficulty }) =>
+    difficulty === "EASY" || difficulty === "MEDIUM"
+      ? "repeat(4,1fr)"
+      : "repeat(5, 1fr)"};
   grid-template-rows: repeat(6, 1fr);
   border: 10px solid black;
   border-radius: 5px;
   grid-gap: 10px;
-
-  @media (orientation: landscape) {
-    color: ${props => props.inputColor || "palevioletred"};
-    grid-template-columns: ${({ difficulty }) =>
-      difficulty === "EASY" || difficulty === "MEDIUM"
-        ? "repeat(4,1fr)"
-        : "repeat(5, 1fr)"};
+  @media (max-height: 668px) {
+    height: 90vh;
+  }
+  @media (max-height: 668px) and (orientation: landscape) {
+    height: 100vh;
   }
 `;
 
@@ -30,6 +29,9 @@ const StyledButton = styled.button`
   grid-column: 4 / span 1;
   grid-row: 6 / span 1;
   font-size: 1.5em;
+  @media (max-height: 668px) {
+    font-size: 1.08em;
+  }
   border: 2px solid #bada55;
   background-color: gray;
   border-radius: 5px;
