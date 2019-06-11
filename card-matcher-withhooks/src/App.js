@@ -42,7 +42,7 @@ function App() {
   }, [difficulty]);
 
   return (
-    <div>
+    <>
       {appState === "ChoiceScreen" ? (
         <ChoiceScreen
           setDifficulty={diff => {
@@ -54,7 +54,7 @@ function App() {
         <MainCardArea
           cards={cards}
           updateCards={() => setCards(cards)}
-          setAppState={() => setAppState("HighScores")}
+          setAppState={state => setAppState(state)}
           setHighScores={time => setNewHighScore(time)}
           setDifficulty={() => {
             difficulty === "EASY"
@@ -69,7 +69,7 @@ function App() {
           currentScore={currentScore}
         />
       )}
-    </div>
+    </>
   );
 }
 

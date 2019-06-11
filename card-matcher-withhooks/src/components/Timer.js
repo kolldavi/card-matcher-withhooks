@@ -3,14 +3,21 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const StyledTimer = styled.div`
-  display: flex;
+  grid-column: 1 / span 3;
+  border: 2px solid #bada55;
+  height: 80%;
   background-color: gray;
-  justify-content: center;
-  align-self: center;
-  grid-column: 2 /4;
+  border-radius: 5px;
   font-size: 1.5em;
+  display: flex;
+  width: 100%;
+  align-self: center;
+  justify-self: center;
+  align-content: center;
+  justify-content: center;
   color: white;
-  margin-top: 23px;
+  font-weight: bold;
+  font-size: 1.5em;
 `;
 const Timer = ({ isDone, setHighScores }) => {
   const [seconds, setSeconds] = useState(0);
@@ -29,7 +36,7 @@ const Timer = ({ isDone, setHighScores }) => {
 
   return (
     <StyledTimer>
-      <p>{seconds}</p>
+      <p>Current Time: {seconds}</p>
     </StyledTimer>
   );
 };

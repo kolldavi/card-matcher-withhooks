@@ -8,33 +8,49 @@ const StyledCardGrid = styled.div`
   max-height: 100vh;
   max-width: 100vw;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr) 20px;
+  grid-template-rows: repeat(6, 1fr);
   padding-top: 1%;
-
   border: 10px solid black;
   border-radius: 5px;
   background-color: #317589;
-  grid-gap: 15px;
+  grid-gap: 10px;
   padding-left: 5%;
 
-  @media (max-width: 700px) {
-    margin-top: 0;
-    margin-left: 0;
-    padding-top: 2%;
+  @media (max-width: 750px) {
     max-height: 100vh;
     max-width: 100vw;
+    padding-top: 2%;
     border-radius: 0;
-    padding-left: 0;
-    grid-template-rows: repeat(6, 1fr) 20px;
-  }
-  @media (max-width: 400px) {
-    max-height: 100vh;
-    max-width: 100vw;
     margin-top: 0;
-    margin-left: 0;
-    padding-top: 2%;
-    padding-left: 0;
-    grid-template-rows: repeat(6, 1fr) 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+`;
+
+const StyledButton = styled.button`
+  grid-column: 4 / span 1;
+  font-size: 1.5em;
+  border: 2px solid #bada55;
+  background-color: gray;
+  border-radius: 5px;
+  display: flex;
+  height: 80%;
+  width: 95%;
+  align-self: center;
+  justify-self: center;
+  align-content: center;
+  justify-content: center;
+  color: white;
+
+  transition: all 0.2s ease;
+  font-weight: 600;
+  &:hover {
+    background-color: pink;
+    font-size: 1.6em;
+  }
+  &:active {
+    background-color: rgb(241, 143, 159);
+    font-size: 1.6em;
   }
 `;
 const MainCardArea = ({
@@ -104,7 +120,7 @@ const MainCardArea = ({
   }
   useEffect(() => {
     if (isDone) {
-      setAppState();
+      setAppState("HighScores");
       setDifficulty();
     }
   }, [isDone, setAppState, setDifficulty]);
@@ -121,7 +137,11 @@ const MainCardArea = ({
           isTurned={cardData["data"]["isTurned"]}
         />
       ))}
+
       <Timer isDone={isDone} setHighScores={setHighScores} />
+      <StyledButton onClick={() => setAppState("ChoiceScreen")}>
+        New Game
+      </StyledButton>
     </StyledCardGrid>
   );
 };
