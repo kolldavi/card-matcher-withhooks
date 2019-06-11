@@ -4,31 +4,31 @@ import Timer from "./Timer";
 import styled from "styled-components";
 
 const StyledCardGrid = styled.div`
+  background-color: #317589;
+  padding-top: 10px;
   display: grid;
-  max-height: 100vh;
-  max-width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  padding-top: 1%;
   border: 10px solid black;
   border-radius: 5px;
-  background-color: #317589;
   grid-gap: 10px;
-  padding-left: 5%;
 
-  @media (max-width: 750px) {
-    max-height: 100vh;
-    max-width: 100vw;
-    padding-top: 2%;
-    border-radius: 0;
-    margin-top: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+  @media (orientation: landscape) {
+    color: ${props => props.inputColor || "palevioletred"};
+    grid-template-columns: ${({ difficulty }) =>
+      difficulty === "EASY" || difficulty === "MEDIUM"
+        ? "repeat(4,1fr)"
+        : "repeat(5, 1fr)"};
   }
 `;
 
 const StyledButton = styled.button`
   grid-column: 4 / span 1;
+  grid-row: 6 / span 1;
   font-size: 1.5em;
   border: 2px solid #bada55;
   background-color: gray;
@@ -58,7 +58,8 @@ const MainCardArea = ({
   updateCards,
   setHighScores,
   setAppState,
-  setDifficulty
+  setDifficulty,
+  difficulty
 }) => {
   const [currentCard, setCurrentCard] = useState(undefined);
   const [prevCard, setPrevCard] = useState(undefined);
@@ -125,7 +126,7 @@ const MainCardArea = ({
     }
   }, [isDone, setAppState, setDifficulty]);
   return (
-    <StyledCardGrid>
+    <StyledCardGrid difficulty={difficulty}>
       {cards.map((cardData, i) => (
         <Card
           key={i}
@@ -139,7 +140,12 @@ const MainCardArea = ({
       ))}
 
       <Timer isDone={isDone} setHighScores={setHighScores} />
-      <StyledButton onClick={() => setAppState("ChoiceScreen")}>
+      <StyledButton
+        onClick={() => {
+          setAppState("ChoiceScreen");
+          setDifficulty();
+        }}
+      >
         New Game
       </StyledButton>
     </StyledCardGrid>

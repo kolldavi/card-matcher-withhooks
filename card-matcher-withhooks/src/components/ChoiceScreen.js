@@ -4,6 +4,7 @@ import React from "react";
 //import PropTypes from 'prop-types'
 const StyledButton = styled.button`
   font-size: 1.02em;
+  margin: 5vh;
   background-color: gray;
   border: 5px solid black;
   align-self: center;
@@ -25,11 +26,14 @@ const StyledButton = styled.button`
 `;
 const ChoiceContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: space-around;
+  justify-content: center;
   min-width: 100vw;
+  min-height: 100vh;
   height: 50vh;
   flex-direction: column;
+  border: 10px solid black;
+  border-radius: 5px;
+  background-color: #317589;
 `;
 function ChoiceScreen({ setDifficulty, setAppState }) {
   return (

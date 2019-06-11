@@ -56,6 +56,7 @@ function App() {
           updateCards={() => setCards(cards)}
           setAppState={state => setAppState(state)}
           setHighScores={time => setNewHighScore(time)}
+          difficulty={difficulty}
           setDifficulty={() => {
             difficulty === "EASY"
               ? setDifficulty("HARD")
