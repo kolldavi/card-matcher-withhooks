@@ -122,7 +122,7 @@ const MainCardArea = ({
         //reset selected cards
         setCurrentCard(undefined);
         setPrevCard(undefined);
-      }, 800);
+      }, 600);
     }
   }
   useEffect(() => {
