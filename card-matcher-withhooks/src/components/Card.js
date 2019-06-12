@@ -17,7 +17,7 @@ const Card = ({ cardSrc, setCard, id, isTurned, isMatched, cardId }) => {
     >
       <img
         className="card-img"
-        src={!isTurned ? backCard : cardSrc}
+        src={ cardSrc}
         alt={!isTurned ? "back of card" : cardSrc}
       />
     </div>

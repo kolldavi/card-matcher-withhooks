@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from "react";
+import React, { useState, useEffect,useCallback, useMemo } from "react";
 import Card from "./Card";
 import Timer from "./Timer";
 import styled from "styled-components";
@@ -82,7 +82,7 @@ const MainCardArea = (props) => {
     updateCards(newCardList);
   };
 
-  const setCardDataMatch = (id, key) => {
+  const setCardDataMatch = useCallback((id, key) => {
     let newCard = cards
       .filter((card, i) => i === key)
       .map(c => {
@@ -92,7 +92,8 @@ const MainCardArea = (props) => {
     let newCardList = cards;
     newCardList[key] = newCard[0];
     updateCards(newCardList);
-  };
+  },[cards, updateCards]);
+useMemo((id, key) => setCardDataMatch(id,key), [setCardDataMatch])
 
   function setCard(id, key) {
     if (!currentCard && !prevCard) {
@@ -125,7 +126,7 @@ const MainCardArea = (props) => {
   }
     const makeRedirect = useCallback((location)=>{
     return  props.history.push(location)
-  })
+  },[props.history])
   
   useEffect(() => {
     if (isDone) {

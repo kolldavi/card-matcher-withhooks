@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { shuffle } from "lodash";
 import "./App.css";
 import MainCardArea from "./components/MainCardArea";
