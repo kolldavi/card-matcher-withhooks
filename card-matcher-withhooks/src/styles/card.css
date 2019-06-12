@@ -11,12 +11,12 @@
   transition: all .3s linear;
   background-color: aqua;
   max-width: calc(100vh / 6);
-  max-height: calc(100vh / 8);
+  max-height: calc(100vh / 7);
 }
 @media (max-height: 668px) and (orientation: landscape) {
   .card{
     max-width: calc(100vh / 6);
-    max-height: calc(100vh / 7);
+    max-height: calc(100vh / 6);
   }
 }
 

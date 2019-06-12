@@ -48,7 +48,7 @@ const StyledButton = styled.button`
 const DisplayScore = ({scores,name})=>{
   return (     
      <HighScoreContainer>
-       <h1>{name} SCORES</h1>
+       <h1>{name} HIGHSCORES</h1>
       <ol>
         {scores.length > 0 ? (
           scores.map((item, index) => (
@@ -63,8 +63,14 @@ const DisplayScore = ({scores,name})=>{
   </HighScoreContainer>
 )
 }
-function HighScores({ setAppState, highScores, currentScore }) {
+function HighScores(props) {
+  const {  highScores, currentScore } =props
 
+  const makeRedirect = () => {
+
+    return  props.history.push(`/`)
+  }
+  
   return (
     <StyledContainer>
       <CurrentScore>
@@ -73,7 +79,7 @@ function HighScores({ setAppState, highScores, currentScore }) {
       {Object.keys(highScores).map(key=>(
          <DisplayScore key={key} scores={highScores[key]} name={key}/>))
       }  
-      <StyledButton onClick={() => setAppState()}>New Game</StyledButton>
+      <StyledButton onClick={()=> makeRedirect()}>New Game</StyledButton>
     </StyledContainer>
   );
 }

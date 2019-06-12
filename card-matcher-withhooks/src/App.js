@@ -5,9 +5,16 @@ import MainCardArea from "./components/MainCardArea";
 import ChoiceScreen from "./components/ChoiceScreen";
 import HighScores from "./components/HighScores";
 import { Cards, resetCard } from "./utils/getImages.js";
-
+import { Switch, Route } from 'react-router-dom'
+import useRouter from './components/useRouter'
+import { useTransition, animated } from 'react-spring'
 function App() {
-  const [appState, setAppState] = useState("ChoiceScreen");
+  const { location } = useRouter()
+  const transitions = useTransition(location, location => location.pathname, {
+    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+  })
   const [cards, setCards] = useState(Cards["EASY"]);
   const [difficulty, setDifficulty] = useState("EASY");
   const [currentScore, setCurrentScore] = useState(0);
@@ -41,37 +48,26 @@ function App() {
     setCards(newCards);
   }, [difficulty]);
 
-  return (
-    <>
-      {appState === "ChoiceScreen" ? (
-        <ChoiceScreen
-          setDifficulty={diff => {
+
+  return transitions.map(({ item, props, key }) => (
+    <animated.div key={key} style={props}>
+      <Switch location={item}>
+      <Route path="/" exact component={(props)=><ChoiceScreen setDifficulty={diff => {
             setDifficulty(diff);
-          }}
-          setAppState={() => setAppState("MainGame")}
-        />
-      ) : appState === "MainGame" ? (
-        <MainCardArea
-          cards={cards}
+          }} {...props}/>}/>
+        <Route path="/MainCardArea" component={(props)=><MainCardArea cards={cards}
           updateCards={() => setCards(cards)}
-          setAppState={state => setAppState(state)}
           setHighScores={time => setNewHighScore(time)}
           difficulty={difficulty}
           setDifficulty={() => {
             difficulty === "EASY"
               ? setDifficulty("HARD")
               : setDifficulty("EASY");
-          }}
-        />
-      ) : (
-        <HighScores
-          highScores={highScores}
-          setAppState={() => setAppState("ChoiceScreen")}
-          currentScore={currentScore}
-        />
-      )}
-    </>
-  );
+          }} {...props}/>}/>
+          <Route path="/HighScores" component={(props)=><HighScores     highScores={highScores}
+          currentScore={currentScore} {...props}/>}/>
+      </Switch>
+    </animated.div>
+  ))
 }
-
 export default App;

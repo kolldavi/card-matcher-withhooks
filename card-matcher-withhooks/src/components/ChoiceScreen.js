@@ -35,29 +35,33 @@ const ChoiceContainer = styled.div`
   border-radius: 5px;
   background-color: #317589;
 `;
-function ChoiceScreen({ setDifficulty, setAppState }) {
+function ChoiceScreen(props) {
+const makeRedirect = ()=>{
+  return  props.history.push(`/MainCardArea`)
+}
+
   return (
     <ChoiceContainer>
       <StyledButton
         onClick={() => {
-          setDifficulty("EASY");
-          setAppState();
+          props.setDifficulty("EASY");
+          makeRedirect();
         }}
       >
         Easy
       </StyledButton>
       <StyledButton
         onClick={() => {
-          setDifficulty("MEDIUM");
-          setAppState();
+          props.setDifficulty("MEDIUM");
+          makeRedirect();
         }}
       >
         Medium
       </StyledButton>
       <StyledButton
         onClick={() => {
-          setDifficulty("HARD");
-          setAppState();
+          props.setDifficulty("HARD");
+          makeRedirect();
         }}
       >
         Hard

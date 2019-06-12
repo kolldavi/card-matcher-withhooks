@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import Card from "./Card";
 import Timer from "./Timer";
 import styled from "styled-components";
@@ -59,14 +59,12 @@ const StyledButton = styled.button`
     font-size: 1.6em;
   }
 `;
-const MainCardArea = ({
-  cards,
-  updateCards,
-  setHighScores,
-  setAppState,
-  setDifficulty,
-  difficulty
-}) => {
+const MainCardArea = (props) => {
+  const {  cards,
+    updateCards,
+    setHighScores,
+    setDifficulty,
+    difficulty} = props;
   const [currentCard, setCurrentCard] = useState(undefined);
   const [prevCard, setPrevCard] = useState(undefined);
   const [numberOfMatches, setNumberOfMatches] = useState(0);
@@ -125,12 +123,19 @@ const MainCardArea = ({
       }, 600);
     }
   }
+    const makeRedirect = useCallback((location)=>{
+    return  props.history.push(location)
+  })
+  
   useEffect(() => {
     if (isDone) {
-      setAppState("HighScores");
       setDifficulty();
+      makeRedirect('/HighScores');
     }
-  }, [isDone, setAppState, setDifficulty]);
+  }, [isDone, makeRedirect, setDifficulty]);
+
+
+  
   return (
     <StyledCardGrid difficulty={difficulty}>
       {cards.map((cardData, i) => (
@@ -148,8 +153,8 @@ const MainCardArea = ({
       <Timer isDone={isDone} setHighScores={setHighScores} />
       <StyledButton
         onClick={() => {
-          setAppState("ChoiceScreen");
           setDifficulty();
+          makeRedirect('/');
         }}
       >
         New Game
