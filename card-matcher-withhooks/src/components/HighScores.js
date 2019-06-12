@@ -45,56 +45,34 @@ const StyledButton = styled.button`
     font-size: 1.1em;
   }
 `;
+const DisplayScore = ({scores,name})=>{
+  return (     
+     <HighScoreContainer>
+       <h1>{name} SCORES</h1>
+      <ol>
+        {scores.length > 0 ? (
+          scores.map((item, index) => (
+            <li key={index}>
+              {item.time} seconds at {item.date}
+            </li>
+          ))
+        ) : (
+          <li>No Scores Available</li>
+        )}
+      </ol>
+  </HighScoreContainer>
+)
+}
 function HighScores({ setAppState, highScores, currentScore }) {
-  const { EASY, MEDIUM, HARD } = highScores;
 
   return (
     <StyledContainer>
       <CurrentScore>
         <h1>Latest Score: {currentScore} Seconds</h1>
       </CurrentScore>
-      <HighScoreContainer>
-        <h1>EASY SCORES</h1>
-        <ol>
-          {EASY.length > 0 ? (
-            EASY.map((item, index) => (
-              <li key={index}>
-                {item.time} seconds at {item.date}
-              </li>
-            ))
-          ) : (
-            <li>No Scores Available</li>
-          )}
-        </ol>
-      </HighScoreContainer>
-      <HighScoreContainer>
-        <h1>MEDIUM SCORES</h1>
-        <ol>
-          {MEDIUM.length > 0 ? (
-            MEDIUM.map((item, index) => (
-              <li key={index}>
-                {item.time} seconds at {item.date}
-              </li>
-            ))
-          ) : (
-            <li>No Scores Available</li>
-          )}
-        </ol>
-      </HighScoreContainer>
-      <HighScoreContainer>
-        <h1>HARD SCORES</h1>
-        <ol>
-          {HARD.length > 0 ? (
-            HARD.map((item, index) => (
-              <li key={index}>
-                {item.time} seconds at {item.date}
-              </li>
-            ))
-          ) : (
-            <li>No Scores Available</li>
-          )}
-        </ol>
-      </HighScoreContainer>
+      {Object.keys(highScores).map(key=>(
+         <DisplayScore key={key} scores={highScores[key]} name={key}/>))
+      }  
       <StyledButton onClick={() => setAppState()}>New Game</StyledButton>
     </StyledContainer>
   );
