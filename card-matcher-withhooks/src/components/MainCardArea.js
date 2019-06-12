@@ -9,23 +9,29 @@ const StyledCardGrid = styled.div`
   display: grid;
   height: 100vh;
   width: 100vw;
-  grid-template-columns: ${({ difficulty }) =>
-    difficulty === "EASY" || difficulty === "MEDIUM"
-      ? "repeat(4,1fr)"
-      : "repeat(5, 1fr)"};
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(4,minmax(calc(100vw / 5), 1fr));
+  grid-template-rows: repeat(4, minmax(calc(100vh / 7), 1fr));
+  grid-template-rows: ${({ difficulty }) =>
+      difficulty === "EASY" || difficulty === "MEDIUM"
+        ? "repeat(4, minmax(calc(100vh / 7), 1fr));"
+        : "repeat(5, minmax(calc(100vh / 7), 1fr));"};
   border: 10px solid black;
   border-radius: 5px;
   grid-gap: 10px;
 
   @media (max-height: 668px) and (orientation: landscape) {
     height: 100vh;
+    grid-template-columns: ${({ difficulty }) =>
+      difficulty === "EASY" || difficulty === "MEDIUM"
+        ? "repeat(4,1fr)"
+        : "repeat(5, minmax(calc(100vh / 7),1fr))"};
+        grid-template-rows: repeat(4, minmax(calc(100vh / 7), 1fr));
   }
 `;
 
 const StyledButton = styled.button`
   grid-column: 4 / span 1;
-  grid-row: 6 / span 1;
+  grid-row: -1 / span 1;
   font-size: 1.5em;
   @media (max-height: 668px) {
     font-size: 1.08em;
@@ -134,7 +140,7 @@ const MainCardArea = ({
           setCard={(cardId, key) => setCard(cardId, key)}
           id={cardData["id"]}
           cardId={i}
-          isMatched={cardData["data"]["isMatched"]}
+          isMatched={cardData["data"]["isMatch"]}
           isTurned={cardData["data"]["isTurned"]}
         />
       ))}

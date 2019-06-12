@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledTimer = styled.div`
   grid-column: 1 / span 3;
-  grid-row: 6 / span 1;
+  grid-row: -1 / span 1;
 
   display: flex;
   width: 100%;

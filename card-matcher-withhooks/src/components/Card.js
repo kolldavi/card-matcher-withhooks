@@ -4,6 +4,7 @@ import backCard from "../images/back-card.svg";
 import "../styles/card.css";
 
 const Card = ({ cardSrc, setCard, id, isTurned, isMatched, cardId }) => {
+
   return (
     <div
       onClick={() => {
@@ -11,7 +12,7 @@ const Card = ({ cardSrc, setCard, id, isTurned, isMatched, cardId }) => {
         setCard(id, cardId);
       }}
       className={
-        isMatched ? "card matched" : !isTurned ? "card flipped" : "card"
+        isMatched ? "card matched isDone" : !isTurned ? "card flipped" : "card"
       }
     >
       <img
