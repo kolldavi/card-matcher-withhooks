@@ -15,8 +15,8 @@
   border-radius: 5px;
   transition: all .3s linear;
   background-color: aqua;
-  max-width: calc(100vh / 6);
-  max-height: calc(100vh / 6);
+  max-width: calc(100vh / 5.5);
+  max-height: calc(100vh / 5);
 
 
 }

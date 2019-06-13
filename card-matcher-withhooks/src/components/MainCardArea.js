@@ -31,7 +31,7 @@ background-color:var(--screen-background-color);
 const StyledButton = styled.button`
   grid-column: 4 / span 1;
   grid-row: -1 / span 1;
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin-right: calc(100vw / 7);
   @media (max-height: 668px) {
     font-size: 1.08em;

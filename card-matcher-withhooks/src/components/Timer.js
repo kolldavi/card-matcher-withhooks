@@ -16,7 +16,6 @@ const StyledTimer = styled.div`
   height: 100%;
   background-color: #4E4E50;
   border-radius: 5px;
-  font-size: 1.5em;
   color: white;
   font-weight: bold;
 `;
