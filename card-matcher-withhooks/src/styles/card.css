@@ -17,6 +17,8 @@
   background-color: aqua;
   max-width: calc(100vh / 6);
   max-height: calc(100vh / 6);
+
+
 }
 @media (max-height: 668px) and (orientation: landscape) {
   .card{
@@ -27,7 +29,7 @@
 
 .isDone{
   opacity: .5;
-  filter: grayscale(100%);
+  filter: grayscale(90%);
   border: 5px solid   #950740;
 }
 

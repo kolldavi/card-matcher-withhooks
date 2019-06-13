@@ -10,7 +10,6 @@ background-color:var(--screen-background-color);
   height: 100vh;
   width: 100vw;
   grid-template-columns: repeat(4,minmax(calc(100vw / 5), 1fr));
-  grid-template-rows: repeat(4, minmax(calc(100vh / 7), 1fr));
   grid-template-rows: ${({ difficulty }) =>
       difficulty === "EASY" || difficulty === "MEDIUM"
         ? "repeat(4, minmax(calc(100vh / 7), 1fr));"
@@ -32,33 +31,19 @@ background-color:var(--screen-background-color);
 const StyledButton = styled.button`
   grid-column: 4 / span 1;
   grid-row: -1 / span 1;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  margin-right: calc(100vw / 7);
   @media (max-height: 668px) {
     font-size: 1.08em;
     grid-column: 4 / span 1;
   }
-  border: 5px solid #6F2232;
-  background-color: #4E4E50;
-  border-radius: 5px;
-  display: flex;
-  height: 100%;
-
-  align-self: center;
-  justify-self: center;
-  align-content: center;
-  justify-content: center;
-  color: white;
-
-  transition: all 0.2s ease;
+  &:hover{
+    font-size: 1.4em;
+  }
+  height:100%;
+  width:100%;
   font-weight: 600;
-  &:hover {
-    background-color: pink;
-    font-size: 1.6em;
-  }
-  &:active {
-    background-color: rgb(241, 143, 159);
-    font-size: 1.6em;
-  }
+
 `;
 const MainCardArea = (props) => {
   const {  cards,

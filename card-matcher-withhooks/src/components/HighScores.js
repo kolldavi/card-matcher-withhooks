@@ -3,61 +3,59 @@ import styled from "styled-components";
 
 const StyledContainer = styled.div`
   display: grid;
-  width: 100vw;
+  height:100vh;
+  width: 90vw;
+  margin-left:5vw;
   height: 100vh;
-
   justify-items: center;
+  grid-template-rows: repeat(4,1fr) 10vh;
+  grid-gap:10px;
 `;
 const CurrentScore = styled.div`
   background-color: rgb(24, 133, 196);
   display: flex;
-  align-self: center;
-  justify-content: center;
   width: 100%;
+  justify-self: center;
+  justify-content: center;
 `;
 const HighScoreContainer = styled.div`
-  border: 3px solid blue;
   display: flex;
   align-self: center;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
+  background-color:var(--screen-background-color);
+
 `;
 const StyledButton = styled.button`
-  font-size: 1.02em;
-  background-color: gray;
-  border: 5px solid black;
-  align-self: center;
+  font-size: 1.5em;
   width: 50vw;
-  min-height: 10vh;
-  border-radius: 5px;
-
-  transition: all 0.2s ease;
+  height: 5vh;
   font-weight: 600;
-  &:hover {
-    background-color: pink;
-    font-size: 1.1em;
+  height: 100%;
+  &:hover{
+    font-size: 1.6em;
   }
+  
+`;
+const StyledListItem = styled.li`
+color:white;
 
-  &:active {
-    background-color: rgb(241, 143, 159);
-    font-size: 1.1em;
-  }
 `;
 const DisplayScore = ({scores,name})=>{
   return (     
      <HighScoreContainer>
-       <h2 style={{color: '#6111AA',textShadow: '#e0e0e0 1px 1px 0'}}>TOP {name} SCORES</h2>
+       <h2 style={{color: '#fEf',textShadow: 'rgb(241, 143, 159)'}}>TOP {name} SCORES</h2>
       <ol>
         {scores.length > 0 ? (
           scores.map((item, index) => (
-            <li key={index}>
+            <StyledListItem key={index}>
               {item.time} seconds at {item.date}
-            </li>
+            </StyledListItem>
           ))
         ) : (
-          <li>No Scores Available</li>
+          <StyledListItem>No Scores Available</StyledListItem>
         )}
       </ol>
   </HighScoreContainer>
@@ -70,15 +68,15 @@ function HighScores(props) {
 
     return  props.history.push(`/`)
   }
-  
+
   return (
     <StyledContainer>
       <CurrentScore>
-        <h1>Latest Score: {currentScore} Seconds</h1>
+        <h2 styled={{fontWeight:'bold'}}>Latest Score: {currentScore} Seconds</h2>
       </CurrentScore>
-      {Object.keys(highScores).map(key=>(
-         <DisplayScore key={key} scores={highScores[key]} name={key}/>))
-      }  
+         <DisplayScore scores={highScores['EASY']} name={'EASY'}/>
+         <DisplayScore scores={highScores['MEDIUM']} name={'MEDIUM'}/>
+         <DisplayScore scores={highScores["HARD"]} name={'HARD'}/>
       <StyledButton onClick={()=> makeRedirect()}>New Game</StyledButton>
     </StyledContainer>
   );
