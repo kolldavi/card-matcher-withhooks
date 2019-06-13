@@ -1,6 +1,4 @@
 import React from "react";
-
-import backCard from "../images/back-card.svg";
 import "../styles/card.css";
 
 const Card = ({ cardSrc, setCard, id, isTurned, isMatched, cardId }) => {

@@ -5,8 +5,8 @@ import React from "react";
 const StyledButton = styled.button`
   font-size: 1.02em;
   margin: 5vh;
-  background-color: gray;
-  border: 5px solid black;
+  background-color: #4E4E50;
+  border: 5px solid #6F2232;
   align-self: center;
   width: 50vw;
   min-height: 10vh;
@@ -31,9 +31,9 @@ const ChoiceContainer = styled.div`
   min-height: 100vh;
   height: 50vh;
   flex-direction: column;
-  border: 10px solid black;
+  background-color:var(--screen-background-color);
   border-radius: 5px;
-  background-color: #317589;
+  
 `;
 function ChoiceScreen(props) {
 const makeRedirect = ()=>{

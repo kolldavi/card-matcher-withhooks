@@ -1,10 +1,10 @@
-import React, { useState, useEffect,useCallback, useMemo } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import Card from "./Card";
 import Timer from "./Timer";
 import styled from "styled-components";
 
 const StyledCardGrid = styled.div`
-  background-color: #317589;
+background-color:var(--screen-background-color);
   padding-top: 10px;
   display: grid;
   height: 100vh;
@@ -15,7 +15,7 @@ const StyledCardGrid = styled.div`
       difficulty === "EASY" || difficulty === "MEDIUM"
         ? "repeat(4, minmax(calc(100vh / 7), 1fr));"
         : "repeat(5, minmax(calc(100vh / 7), 1fr));"};
-  border: 10px solid black;
+
   border-radius: 5px;
   grid-gap: 10px;
 
@@ -35,13 +35,14 @@ const StyledButton = styled.button`
   font-size: 1.5em;
   @media (max-height: 668px) {
     font-size: 1.08em;
+    grid-column: 4 / span 1;
   }
-  border: 2px solid #bada55;
-  background-color: gray;
+  border: 5px solid #6F2232;
+  background-color: #4E4E50;
   border-radius: 5px;
   display: flex;
-  height: 80%;
-  width: 95%;
+  height: 100%;
+
   align-self: center;
   justify-self: center;
   align-content: center;
@@ -93,7 +94,6 @@ const MainCardArea = (props) => {
     newCardList[key] = newCard[0];
     updateCards(newCardList);
   },[cards, updateCards]);
-useMemo((id, key) => setCardDataMatch(id,key), [setCardDataMatch])
 
   function setCard(id, key) {
     if (!currentCard && !prevCard) {

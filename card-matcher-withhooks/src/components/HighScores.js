@@ -48,7 +48,7 @@ const StyledButton = styled.button`
 const DisplayScore = ({scores,name})=>{
   return (     
      <HighScoreContainer>
-       <h1>{name} HIGHSCORES</h1>
+       <h2 style={{color: '#6111AA',textShadow: '#e0e0e0 1px 1px 0'}}>TOP {name} SCORES</h2>
       <ol>
         {scores.length > 0 ? (
           scores.map((item, index) => (

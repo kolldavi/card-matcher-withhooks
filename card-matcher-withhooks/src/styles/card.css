@@ -1,21 +1,22 @@
 .flipped {
   transform: rotateY(180deg);
-  background:linear-gradient(rgba(97, 98 ,116 , .5), rgba(97, 98 ,116 , .5)), url("../images/back-card.svg"); 
-
+  background: url("../images/back-card.svg"); 
+  background-color:var(--screen-background-color);
 }
 .card.flipped > img {
   opacity: 0;
+  
 }
 .card {
   display: flex;
   justify-self: center;
-  border: 5px solid rgb(178, 196, 24);
-  box-shadow: 2px 4px 4px 4px #044f67;
+  border: 5px solid  #950740;
+  box-shadow: 1px 2px 2px 2px #6F2232;
   border-radius: 5px;
   transition: all .3s linear;
   background-color: aqua;
   max-width: calc(100vh / 6);
-  max-height: calc(100vh / 7);
+  max-height: calc(100vh / 6);
 }
 @media (max-height: 668px) and (orientation: landscape) {
   .card{
@@ -27,6 +28,7 @@
 .isDone{
   opacity: .5;
   filter: grayscale(100%);
+  border: 5px solid   #950740;
 }
 
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const StyledTimer = styled.div`
-  grid-column: 1 / span 3;
+  grid-column: 2 / span 2;
   grid-row: -1 / span 1;
 
   display: flex;
@@ -12,9 +12,11 @@ const StyledTimer = styled.div`
   justify-self: center;
   align-content: center;
   justify-content: center;
-  border: 2px solid #bada55;
-  height: 80%;
-  background-color: gray;
+
+
+  border: 5px solid #6F2232;
+  height: 100%;
+  background-color: #4E4E50;
   border-radius: 5px;
   font-size: 1.5em;
   color: white;

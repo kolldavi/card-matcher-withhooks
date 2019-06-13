@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState,  useEffect } from "react";
 import { shuffle } from "lodash";
 import "./App.css";
 import MainCardArea from "./components/MainCardArea";
@@ -13,7 +13,7 @@ function App() {
   const transitions = useTransition(location, location => location.pathname, {
     from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)' },
   })
   const [cards, setCards] = useState(Cards["EASY"]);
   const [difficulty, setDifficulty] = useState("EASY");
