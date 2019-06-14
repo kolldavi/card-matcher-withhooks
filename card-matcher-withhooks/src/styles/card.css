@@ -4,7 +4,7 @@
   background-color:var(--screen-background-color);
 }
 .card.flipped > img {
-  opacity: 0;
+  opacity: .0;
   
 }
 .card {

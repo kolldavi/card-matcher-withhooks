@@ -45,7 +45,7 @@ color:white;
 const DisplayScore = ({scores,name})=>{
   return (     
      <HighScoreContainer>
-       <h2 style={{color: '#fEf',textShadow: 'rgb(241, 143, 159)',  border:'1px solid red'}}>TOP {name} SCORES</h2>
+       <h2 style={{color: '#fEf',textShadow: 'rgb(241, 143, 159)'}}>TOP {name} SCORES</h2>
       <ol>
         {scores.length > 0 ? (
           scores.map((item, index) => (
