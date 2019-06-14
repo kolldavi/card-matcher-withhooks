@@ -15,14 +15,13 @@ const CurrentScore = styled.div`
   background-color: rgb(24, 133, 196);
   display: flex;
   width: 100%;
-  justify-self: center;
+  align-items: center;
   justify-content: center;
 `;
 const HighScoreContainer = styled.div`
   display: flex;
-  align-self: center;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   background-color:var(--screen-background-color);
@@ -46,7 +45,7 @@ color:white;
 const DisplayScore = ({scores,name})=>{
   return (     
      <HighScoreContainer>
-       <h2 style={{color: '#fEf',textShadow: 'rgb(241, 143, 159)'}}>TOP {name} SCORES</h2>
+       <h2 style={{color: '#fEf',textShadow: 'rgb(241, 143, 159)',  border:'1px solid red'}}>TOP {name} SCORES</h2>
       <ol>
         {scores.length > 0 ? (
           scores.map((item, index) => (
