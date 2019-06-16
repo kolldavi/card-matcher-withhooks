@@ -68,7 +68,7 @@ const MainCardArea = (props) => {
     updateCards(newCardList);
   };
 
-  const setCardDataMatch = useCallback((id, key) => {
+  const setCardDataMatch = (id, key) => {
     let newCard = cards
       .filter((card, i) => i === key)
       .map(c => {
@@ -78,7 +78,7 @@ const MainCardArea = (props) => {
     let newCardList = cards;
     newCardList[key] = newCard[0];
     updateCards(newCardList);
-  },[cards, updateCards]);
+  };
 
   function setCard(id, key) {
     if (!currentCard && !prevCard) {
@@ -90,16 +90,19 @@ const MainCardArea = (props) => {
       setCardDataTurn(id, key, true);
       setPrevCard([id, key]);
       setTimeout(() => {
-        if (currentCard[0] === id) {
           //match
+        if (currentCard[0] === id) {
+          //check if player wins game
           setNumberOfMatches(numberOfMatches + 1);
           if (1 + numberOfMatches === cards.length / 2) {
             setIsDone(true);
             return;
           }
+          //set cards  match
           setCardDataMatch(id, key);
           setCardDataMatch(currentCard[0], currentCard[1]);
         } else {
+          //reset cards no mattch
           setCardDataTurn(id, key, false);
           setCardDataTurn(currentCard[0], currentCard[1], false);
         }
