@@ -6,9 +6,11 @@ import styled from "styled-components";
 const StyledCardGrid = styled.div`
 background-color:var(--screen-background-color);
   padding-top: 10px;
+
   display: grid;
   height: 100vh;
   width: 100vw;
+  justify-items: center;
   grid-template-columns: repeat(4,minmax(calc(100vw / 5), 1fr));
   grid-template-rows: ${({ difficulty }) =>
       difficulty === "EASY" || difficulty === "MEDIUM"
@@ -26,6 +28,7 @@ background-color:var(--screen-background-color);
         : "repeat(5, minmax(calc(100vh / 7),1fr))"};
         grid-template-rows: repeat(4, minmax(calc(100vh / 7), 1fr));
   }
+
 `;
 
 const StyledButton = styled.button`
